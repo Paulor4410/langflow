@@ -123,5 +123,8 @@ Neste exemplo, o chatbot não apenas responde a perguntas genéricas, mas també
 
 Conclusão
 
-O Langflow é uma ferramenta poderosa para qualquer desenvolvedor que deseje construir aplicações baseadas em linguagem natural de forma rápida e modular. Com a capacidade de gerar respostas, criar fluxos de conversa personalizados e integrar APIs externas, o Langflow pode ser adaptado a uma ampla gama de necessidades de negócios e projetos.
+O Langflow é uma ferramenta poderosa para qualquer desenvolvedor que deseje construir 
+aplicações baseadas em linguagem natural de forma rápida e modular. Com a capacidade 
+de gerar respostas, criar fluxos de conversa personalizados e integrar APIs externas,
+o Langflow pode ser adaptado a uma ampla gama de necessidades de negócios e projetos.
 
