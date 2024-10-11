@@ -101,8 +101,8 @@ futuras.
 
 Integração com APIs Externas
 
-Langflow também facilita a integração com APIs externas para trazer dados e gerar respostas contextualizadas. 
-Aqui está um exemplo de como integrar com uma API de previsão do tempo:
+Langflow também facilita a integração com APIs externas para trazer dados e gerar respostas
+contextualizadas, aqui está um exemplo de como integrar com uma API de previsão do tempo:
 
 import requests
 from langflow import LangflowModel
