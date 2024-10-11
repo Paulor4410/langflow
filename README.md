@@ -19,20 +19,20 @@ pip install langflow
 
 Após a instalação, você pode importar e utilizar suas funcionalidades principais.
 
-# Exemplo Básico: Criando um Chatbot Simples
+Exemplo Básico: Criando um Chatbot Simples
 
 Vamos criar um exemplo básico de um chatbot que utiliza o Langflow para gerar respostas baseadas em perguntas fornecidas pelo usuário.
 
-## Passo 1: Importar e Configurar
+Passo 1: Importar e Configurar
 
 Primeiro, importe a biblioteca Langflow e configure o modelo de linguagem que será utilizado, como o GPT-3:
 
 from langflow import LangflowModel
 
-# Configurando o modelo GPT-3
+Configurando o modelo GPT-3
 model = LangflowModel(model_name="gpt-3.5-turbo")
 
-## Passo 2: Criando um Fluxo de Perguntas e Respostas
+Passo 2: Criando um Fluxo de Perguntas e Respostas
 
 Agora que temos o modelo, podemos criar um fluxo simples de perguntas e respostas. Neste exemplo, o usuário fará uma pergunta e o modelo gerará uma resposta:
 
@@ -45,17 +45,17 @@ def chatbot():
         
         print(f"Chatbot: {response}")
 
-# Executa o chatbot
+Executa o chatbot
 chatbot()
 
-##Passo 3: Testando o Chatbot
+Passo 3: Testando o Chatbot
 
 Ao executar o código acima, o chatbot estará pronto para interagir. Basta rodar o script e inserir perguntas:
 
 Você: O que é Langflow?
 Chatbot: Langflow é uma biblioteca que facilita a criação de aplicações baseadas em modelos de linguagem natural.
 
-## Passo 4: Melhorando o Chatbot com Fluxos Condicionais
+Passo 4: Melhorando o Chatbot com Fluxos Condicionais
 
 O Langflow permite criar fluxos de conversação mais complexos, onde a resposta do chatbot pode variar dependendo do contexto ou de entradas anteriores.
 
@@ -78,5 +78,50 @@ def chatbot_condicional():
 
 chatbot_condicional()
 
-## Fluxo Explicativo
+Fluxo Explicativo
+
 No exemplo acima, o fluxo do chatbot foi ajustado para reconhecer se o usuário mencionou "nome" em sua pergunta e, nesse caso, faz uma pergunta adicional para coletar o nome do usuário e armazená-lo no contexto. Isso permite que o chatbot personalize suas respostas nas interações futuras.
+
+Integração com APIs Externas
+
+Langflow também facilita a integração com APIs externas para trazer dados e gerar respostas contextualizadas. Aqui está um exemplo de como integrar com uma API de previsão do tempo:
+
+import requests
+from langflow import LangflowModel
+
+model = LangflowModel(model_name="gpt-3.5-turbo")
+
+def get_weather(city):
+    api_key = "SUA_API_KEY"
+    url = f"http://api.weatherapi.com/v1/current.json?key={api_key}&q={city}"
+    response = requests.get(url)
+    
+    if response.status_code == 200:
+        weather_data = response.json()
+        return f"Está {weather_data['current']['temp_c']}°C em {city}."
+    else:
+        return "Não consegui obter a previsão do tempo."
+
+def chatbot_com_api():
+    while True:
+        user_input = input("Você: ")
+        
+        if "previsão do tempo" in user_input.lower():
+            print("Chatbot: Qual cidade?")
+            cidade = input("Você: ")
+            previsao = get_weather(cidade)
+            print(f"Chatbot: {previsao}")
+        else:
+            response = model.generate_response(user_input)
+            print(f"Chatbot: {response}")
+
+chatbot_com_api()
+
+Explicação
+
+Neste exemplo, o chatbot não apenas responde a perguntas genéricas, mas também pode fornecer informações de uma API de previsão do tempo quando o usuário pergunta algo relacionado ao clima.
+
+Conclusão
+
+O Langflow é uma ferramenta poderosa para qualquer desenvolvedor que deseje construir aplicações baseadas em linguagem natural de forma rápida e modular. Com a capacidade de gerar respostas, criar fluxos de conversa personalizados e integrar APIs externas, o Langflow pode ser adaptado a uma ampla gama de necessidades de negócios e projetos.
+
